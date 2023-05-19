@@ -1,10 +1,105 @@
 <html>
     <head>
-        <title>Cristian Vitelli</title>
+        <title>Form</title>
+        <script language ="javascript">
+            function sconto()
+            {
+                prezzo1 = form.prodotto1.value;
+                prezzo2 = form.prodotto2.value;
+                prezzo3 = form.prodotto3.value;
+                totale = 0;
+                if(form.prodotto1.checked)
+                {
+                    totale = totale + parseFloat(prezzo1);
+                }
+                if(form.prodotto2.checked)
+                {
+                    totale = totale + parseFloat(prezzo2);
+                }
+                if(form.prodotto3.checked)
+                {
+                    totale = totale + parseFloat(prezzo3);
+                }
+				totale = totale - (totale * 0.2);
+                k = form.lingua.selectedIndex;
+				switch(k)
+				{
+					case 0:
+						lingua = "Italiano";
+						break;
+					case 1:
+						lingua = "Inglese";
+						break;
+					case 2:
+						lingua = "Francese";
+						break;
+					case 3:
+						lingua = "Spagnolo";
+						break;
+				}
+				
+				if(form.sex[0].checked)
+				{
+					if(lingua == "Italiano")
+					{
+						alert("Buongiorno signore, il prezzo totale e' "+totale+"€");
+					}
+					if(lingua == "Inglese")
+					{
+						alert("Good morning sir, the total price is "+totale+"€");
+					}
+					if(lingua == "Francese")
+					{
+						alert("Bonjour Monsieur, le prix total est de "+totale+"€");
+					}
+					if(lingua == "Spagnolo")
+					{
+						alert("Buenos días señor, el precio total es "+totale+"€");
+					}
+				}
+				else
+				{
+					if(lingua == "Italiano")
+					{
+						alert("Buongiorno signora, il prezzo totale e' "+totale+"€");
+					}
+					if(lingua == "Inglese")
+					{
+						alert("Good morning Madam, the total price is "+totale+"€");
+					}
+					if(lingua == "Francese")
+					{
+						alert("Bonjour Madame, le prix total est de "+totale+"€");
+					}
+					if(lingua == "Spagnolo")
+					{
+						alert("Buenos días señora, el precio total es "+total+"€");
+					}
+				}
+            }
+        </script>
     </head>
-   <body>
-        <h1>Ciao sono Cristian</h1>
-        <br>
-        <p>su questo sito vedrete cose su di me</p>
-   </body> 
+    <body>
+        <form name="form">
+            <label for = "nome">Inserisci nome:</label>
+            <input type = "text" id = "nome" name = "nome" required><br><br>
+            <label for = "cognome">Inserisci cognome:</label>
+            <input type = "text" id = "cognome" name = "cognome" required><br><br>
+            <label for="lang">Lingua</label>
+            <select name="lingua">
+            <option value="1">Italiano</option>
+            <option value="2">Inglese</option>
+            <option value="3">Francese</option>
+            <option value="4">Spagnolo</option>
+            </select><br><br>
+            Scegli i prodotti:
+            <input type="checkbox" name="prodotto1" value=3>Libro 3€
+            <input type="checkbox" name="prodotto2" value=0.5>Penna 0,50€
+            <input type="checkbox" name="prodotto3" value=1>Quaderno 1€<br><br>
+            Sesso:
+            <input type="radio" name="sex">Maschio
+            <input type="radio" name="sex">Femmina<br><br>
+            <input type="button" value="Totale" onclick="sconto();">
+        </form>
+    </body>
 </html>
